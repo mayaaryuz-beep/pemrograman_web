@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan4</title>
+</head>
+<body>
+
+    <form onsubmit="hitung(event)">
+        <button type="button">Angka 1 :</button><br>
+        <input type="number" id="angka1" required><br><br>
+
+        <button type="button">Angka 2 :</button><br>
+        <input type="number" id="angka2" required><br><br>
+
+        <button type="submit" onclick="operasi='tambah'">+</button>
+        <button type="submit" onclick="operasi='kurang'">−</button>
+        <button type="submit" onclick="operasi='kali'">×</button>
+        <button type="submit" onclick="operasi='bagi'">÷</button>
+    </form>
+
+    <div id="hasil"></div>
+
+    <script>
+        let operasi = "tambah";
+
+        function hitung(e) {
+            e.preventDefault();
+
+            let a = parseFloat(document.getElementById("angka1").value);
+            let b = parseFloat(document.getElementById("angka2").value);
+            let hasil = 0;
+
+            if (operasi === "tambah") {
+                hasil = a + b;
+            } else if (operasi === "kurang") {
+                hasil = a - b;
+            } else if (operasi === "kali") {
+                hasil = a * b;
+            } else if (operasi === "bagi") {
+                if (b === 0) {
+                    document.getElementById("hasil").innerHTML =
+                        "<p><b>Tidak bisa dibagi dengan nol</b></p>";
+                    return;
+                }
+                hasil = a / b;
+            }
+
+            document.getElementById("hasil").innerHTML =
+                "<p><b>Hasil: " + hasil + "</b></p>";
+        }
+    </script>
+
+</body>
+</html>

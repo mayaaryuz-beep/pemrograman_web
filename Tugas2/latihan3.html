@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hover HP dengan Kursor Tangan</title>
+
+<style>
+    /* KURSOR PALSU (TANGAN) */
+    .kursor {
+        width: 22px;
+        height: 22px;
+        background: black;
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        z-index: 999;
+    }
+
+    /* Jari telunjuk */
+    .kursor::after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 16px;
+        background: black;
+        top: -14px;
+        left: 8px;
+        border-radius: 3px;
+    }
+
+    button {
+        margin: 20px;
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+</style>
+</head>
+<body>
+
+<!-- Kursor Palsu -->
+<div class="kursor" id="kursor"></div>
+
+<!-- Tombol -->
+<button id="p1">Paragraf 1</button>
+<button id="p2">Paragraf 2</button>
+
+<!-- Hasil -->
+<p id="hasil"></p>
+
+<script>
+    const kursor = document.getElementById("kursor");
+    const hasil = document.getElementById("hasil");
+    const p1 = document.getElementById("p1");
+    const p2 = document.getElementById("p2");
+
+    function cekPosisi(e) {
+        const touch = e.touches[0];
+        const x = touch.clientX;
+        const y = touch.clientY;
+
+        // Gerakkan kursor palsu
+        kursor.style.left = x + "px";
+        kursor.style.top = y + "px";
+
+        // Ambil posisi tombol
+        const r1 = p1.getBoundingClientRect();
+        const r2 = p2.getBoundingClientRect();
+
+        // Cek area sentuhan
+        if (x > r1.left && x < r1.right && y > r1.top && y < r1.bottom) {
+            hasil.textContent = "Andi";
+        }
+        else if (x > r2.left && x < r2.right && y > r2.top && y < r2.bottom) {
+            hasil.textContent = "Budi";
+        }
+        else {
+            hasil.textContent = "";
+        }
+    }
+
+    document.addEventListener("touchstart", cekPosisi);
+    document.addEventListener("touchmove", cekPosisi);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tampil Nama dengan Reset</title>
+</head>
+<body>
+
+    <button onclick="tampilNama('Andi')">Tombol1</button>
+    <button onclick="tampilNama('Budi')">Tombol2</button>
+    <button onclick="reset()">Reset</button>
+
+    <br><br>
+
+    <p id="hasil"></p>
+
+    <script>
+        function tampilNama(nama) {
+            document.getElementById("hasil").textContent = nama;
+        }
+
+        function reset() {
+            document.getElementById("hasil").textContent = "";
+        }
+    </script>
+
+</body>
+</html>
