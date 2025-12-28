@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Konversi Mata Uang</title>
+    <style>
+        body {
+            font-family: serif;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 300px;
+        }
+        .buttons {
+            display: flex;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        #hasil {
+            margin-top: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Konversi Mata Uang</h2>
+
+<div class="container">
+    <div>
+        <span id="labelInput">Dollar</span>
+        <input type="number" id="inputNilai" value="0">
+    </div>
+
+    <div class="buttons">
+        <button onclick="konversi()">Konversi</button>
+        <button onclick="tukar()">Tukar</button>
+    </div>
+
+    <div id="hasil">Rupiah 0</div>
+</div>
+
+<script>
+    const kurs = 15000;
+    let dollarKeRupiah = true;
+
+    const input = document.getElementById("inputNilai");
+    const label = document.getElementById("labelInput");
+    const hasil = document.getElementById("hasil");
+
+    function konversi() {
+        let nilai = parseFloat(input.value);
+
+        if (dollarKeRupiah) {
+            hasil.innerText = "Rupiah " + (nilai * kurs).toLocaleString("id-ID");
+        } else {
+            hasil.innerText = "Dollar " + (nilai / kurs);
+        }
+    }
+
+    function tukar() {
+        dollarKeRupiah = !dollarKeRupiah;
+
+        label.innerText = dollarKeRupiah ? "Dollar" : "Rupiah";
+        hasil.innerText = dollarKeRupiah ? "Rupiah 0" : "Dollar 0";
+        input.value = 0;
+    }
+</script>
+
+</body>
+</html>

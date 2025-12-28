@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <title>Latihan 10 - Menu Dropdown</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; }
-        
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
         .menu-btn {
             padding: 5px 15px;
             cursor: pointer;
         }
 
         .menu-list {
-            display: none; 
+            display: none;
             margin-top: 2px;
             width: fit-content;
         }
@@ -35,25 +38,22 @@
 </head>
 <body>
 
-    <button class="menu-btn" onclick="toggleMenu()">menu</button>
+<button class="menu-btn" onclick="toggleMenu()">menu</button>
 
-    <div id="dropdownMenu" class="menu-list">
-        <div class="menu-item">menu 1</div>
-        <div class="menu-item">menu 2</div>
-        <div class="menu-item">menu 3</div>
-    </div>
+<div id="dropdownMenu" class="menu-list">
+    <div class="menu-item">menu 1</div>
+    <div class="menu-item">menu 2</div>
+    <div class="menu-item">menu 3</div>
+</div>
 
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("dropdownMenu");
-            
-            if (menu.style.display === "block") {
-                menu.style.display = "none"; 
-            } else {
-                menu.style.display = "block"; 
-            }
-        }
-    </script>
+<script>
+    const dropdown = document.getElementById("dropdownMenu");
+
+    function toggleMenu() {
+        dropdown.style.display =
+            dropdown.style.display === "block" ? "none" : "block";
+    }
+</script>
 
 </body>
 </html>
